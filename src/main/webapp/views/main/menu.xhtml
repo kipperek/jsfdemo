@@ -4,23 +4,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
   <div>
-	<h:form>
-	  <ul>
-		<li>
-		  <h:commandLink action="home?faces-redirect=true">
-			<h:outputText value="#{msg.linkHome}" />
-		  </h:commandLink>
-		</li>
-		<li>
-		  <h:commandLink action="add?faces-redirect=true">
-			<h:outputText value="#{msg.personAddLabel}" />
-		  </h:commandLink></li>
-		<li>
-		  <h:commandLink action="showPersons?faces-redirect=true">
-			 <h:outputText value="#{msg.personAllLabel}" />
-		  </h:commandLink>
-		</li>
-	</ul>
-   </h:form>
+  	<a href="home.jsf" class="menu_link">#{msg.linkHome}</a>
+  	<a href="addBuilding.jsf" class="menu_link">#{msg.linkBuildingAdd}</a>
+    <a href="listBuilding.jsf" class="menu_link">#{msg.linkAllBuilding}</a>
   </div>
 </ui:composition>

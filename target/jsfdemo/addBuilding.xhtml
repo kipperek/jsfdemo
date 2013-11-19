@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+	<ui:define name="content">
+		<h2>#{msg.addBuildingHeader}</h2>
+		<hr></hr>
+
+		<h:form id="buildingForm">
+		<f:event type="postValidate" listener="#{buildingF.validateOkna}"/>
+			<h:panelGrid columns="2">
+				<h:outputText value="#{msg.buildingLabelWysokosc}" />
+				<h:inputText id="wysokosc" value="#{buildingF.building.wysokosc}"
+					required="#{true}" >
+					<f:validateDoubleRange minimum="2.5" maximum="300.0"/>
+				</h:inputText>
+					
+				<h:outputText value="#{msg.buildingLabelYOB}" />
+				<h:inputText id="yob" value="#{buildingF.building.yob}"
+					required="#{true}" >
+					<f:validateLongRange minimum="1800"/>				
+				</h:inputText>
+					
+				<h:outputText value="#{msg.buildingLabelKolor}" />
+				<h:inputText id="kolor" value="#{buildingF.building.kolor}"
+					required="#{true}" />
+				
+				<h:outputText value="#{msg.buildingLabelAdres}" />
+				<h:inputText id="adres" value="#{buildingF.building.adres}" validator="#{buildingF.uniqueAdres}"
+					required="#{true}" />	
+				
+				<h:outputText value="#{msg.buildingLabelMiasto}" />
+				<h:inputText id="miasto" value="#{buildingF.building.miasto}"
+					required="#{true}" />
+				
+				<h:outputText value="#{msg.buildingLabelIloscOkien}" />
+				<h:inputText id="iloscOkien" value="#{buildingF.building.iloscOkien}"
+					required="#{true}" >
+				<f:validator validatorId="cmValidator"/>
+				</h:inputText>
+					
+					<h:outputText value="#{msg.buildingLabelMieszkalny}" />
+				<h:inputText id="mieszkalny" value="#{buildingF.building.mieszkalny}"
+					required="#{true}" >
+					</h:inputText>
+					
+			</h:panelGrid>
+			
+			<h:commandButton value="#{msg.buildingFormOKButton}"
+				action="#{buildingF.addBuilding}" />
+			<h:panelGrid>
+				<h:messages id="messages" showDetail="#{true}"
+					showSummary="#{false}" />
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

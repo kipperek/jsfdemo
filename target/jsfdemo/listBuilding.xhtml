@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+	<ui:define name="content">
+		<h2>#{msg.listBuildingHeader}</h2>
+		<hr></hr>
+		<h:form>
+			<h:dataTable value="#{buildingF.allBuildings}" var="item" styleClass="listT" headerClass="listT-h" rowClasses="listT-r">
+				<h:column>
+					<f:facet name="header">#{msg.listLabelWysokosc}</f:facet>
+					#{item.wysokosc}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg.listLabelYOB}</f:facet>
+					#{item.yob}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg.listLabelKolor}</f:facet>
+					#{item.kolor}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg.listLabelAdres}</f:facet>
+					#{item.adres}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg.listLabelMiasto}</f:facet>
+					#{item.miasto}
+				</h:column>
+				<h:column>
+				<f:facet name="header">#{msg.listLabelIloscOkien}</f:facet>
+					#{item.iloscOkien}
+				</h:column>
+				<h:column>
+					<f:facet name="header">#{msg.listLabelMieszkalny}</f:facet>
+					#{item.mieszkalny}
+				</h:column>
+					
+				<h:column>
+					<f:facet name="header">#{msg.action}</f:facet>
+					<h:commandLink value="#{msg.actionDelete}" action="#{buildingF.deleteBuilding}"/>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
